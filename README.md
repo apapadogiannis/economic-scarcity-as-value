@@ -1,6 +1,7 @@
 # Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24051776.svg)](https://doi.org/10.5281/zenodo.24051776)
+[![replication](https://github.com/apapadogiannis/economic-scarcity-as-value/actions/workflows/replicate.yml/badge.svg)](https://github.com/apapadogiannis/economic-scarcity-as-value/actions/workflows/replicate.yml)
 
 Replication package for the working paper by Agisilaos Papadogiannis (November 2026),
 under review at *IET Blockchain*. Paper: `paper/manuscript.pdf`. Archived on Zenodo:
@@ -50,7 +51,8 @@ tests/      consistency tests (pytest)
 ## Reproducing
 
 Requirements: Python 3.11+, `pip install -r requirements.txt` (pandas, numpy, matplotlib;
-pytest for the tests).
+pytest for the tests). For byte-identical tables use `requirements-lock.txt`, the exact
+versions under which `outputs/` were generated.
 
 ```bash
 ./run_all.sh              # every table and figure, under a minute
@@ -59,7 +61,9 @@ python3 -m pytest -q tests/
 
 The scripts are deterministic (fixed seed for the score-perturbation draws); re-running
 them reproduces `outputs/` and `figures/` exactly. Each takes
-`python3 -I <script>.py DATA_DIR OUT_DIR`.
+`python3 -I <script>.py DATA_DIR OUT_DIR`. A GitHub Actions workflow runs the tests and the
+full pipeline on every push and monthly, and fails if any result table differs from the
+committed one; the badge above shows the latest run.
 
 | Script | What it produces | Where it appears |
 |---|---|---|

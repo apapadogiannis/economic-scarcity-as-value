@@ -1,0 +1,8 @@
+# Exact versions under which outputs/ were generated (Python 3.13).
+# Used by the replication workflow; humans can use requirements.txt instead.
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+matplotlib==3.11.2
+numpy==2.5.3
+pandas==2.3.3
+pytest==9.1.1
