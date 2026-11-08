@@ -1,7 +1,10 @@
 # Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24051776.svg)](https://doi.org/10.5281/zenodo.24051776)
+
 Replication package for the working paper by Agisilaos Papadogiannis (November 2026),
-under review at *IET Blockchain*. Paper: `paper/manuscript.pdf`.
+under review at *IET Blockchain*. Paper: `paper/manuscript.pdf`. Archived on Zenodo:
+[doi:10.5281/zenodo.24051776](https://doi.org/10.5281/zenodo.24051776) (concept DOI, always resolves to the latest version; v1.0 is 10.5281/zenodo.24051777).
 
 ## What this is
 
@@ -84,7 +87,7 @@ Library modules: `config.py` (every modelling convention, stated once), `scarcit
 ## Citation
 
 > Papadogiannis, A. (2026). "Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond." Working paper.
-> https://github.com/apapadogiannis/economic-scarcity-as-value
+> https://doi.org/10.5281/zenodo.24051776
 
 ## Disclaimer
 
