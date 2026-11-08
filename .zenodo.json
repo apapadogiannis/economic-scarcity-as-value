@@ -1,0 +1,20 @@
+{
+  "title": "Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond: paper and replication package",
+  "upload_type": "software",
+  "description": "Working paper and full replication package. A structural valuation framework in which economic scarcity, the monetizable intersection of desirability and constrained access, is the foundation of asset value. Five protocol-level elements (Purpose, Incentives, Consensus, Tokenomics, Network Effects) are mapped to a network value function V = D S (u/u0)^alpha, with a scored physical-scarcity index S, normalized adoption u, and an implied desirability D recovered as the residual of market value. Applied to Bitcoin, Ethereum and Bittensor as of 5 August 2025: Bitcoin and Ethereum carry nearly identical implied desirability per normalized user, while Bittensor's valuation is expectation-dominated. Includes all data, scripts, result tables, figures and tests; the scripts reproduce every number in the paper.",
+  "creators": [
+    {
+      "name": "Papadogiannis, Agisilaos",
+      "orcid": "0009-0002-7753-7052"
+    }
+  ],
+  "keywords": ["economic scarcity", "blockchain valuation", "tokenomics", "network effects", "Bitcoin", "Ethereum", "Bittensor", "implied desirability", "asset pricing"],
+  "license": "MIT",
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/apapadogiannis/economic-scarcity-as-value",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+delta,baseline_S_order,baseline_D_order,oat_S_flips,oat_D_flips,oat_cases,mc_draws,mc_share_S_preserved,mc_share_D_preserved
+0.15,BTC>ETH>TAO,TAO>BTC>ETH,0,0,30,20000,0.9722,1.0

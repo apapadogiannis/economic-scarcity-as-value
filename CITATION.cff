@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this paper or replication package, please cite it as below."
+title: "Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond"
+authors:
+  - family-names: Papadogiannis
+    given-names: Agisilaos
+    orcid: "https://orcid.org/0009-0002-7753-7052"
+date-released: 2026-11-08
+version: "1.0"
+license: MIT
+repository-code: "https://github.com/apapadogiannis/economic-scarcity-as-value"
+preferred-citation:
+  type: article
+  title: "Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond"
+  authors:
+    - family-names: Papadogiannis
+      given-names: Agisilaos
+  year: 2026
+  notes: "Working paper, under review at IET Blockchain"

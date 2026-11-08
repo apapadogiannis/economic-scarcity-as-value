@@ -1,0 +1,15 @@
+network,variable,value,unit,source,access_date,notes
+BTC,market_cap,2.30e12,USD,CoinGecko / paper Section 5.3.2,2025-08-05,Circulating-supply market capitalization
+ETH,market_cap,5.60e11,USD,CoinGecko / paper Section 5.3.2,2025-08-05,Circulating-supply market capitalization
+TAO,market_cap,3.26e9,USD,CoinGecko / paper Section 5.3.2,2025-08-05,Circulating-supply market capitalization
+BTC,inflation_rate,0.017,decimal_per_year,StakingRewards.com,2025-08-05,Annualized issuance rate
+ETH,inflation_rate,0.0069,decimal_per_year,StakingRewards.com,2025-08-05,Annualized net issuance (post-Merge; net of EIP-1559 burn)
+TAO,inflation_rate,0.2035,decimal_per_year,StakingRewards.com,2025-08-05,Annualized emission rate (pre-Dec-2025 halving)
+BTC,active_users,1.00e6,addresses,Glassnode 30d MA of daily active addresses,2025-08-05,Upper end of 0.8-1.0M reported range
+ETH,active_users,6.00e5,addresses,Glassnode 30d MA of daily active addresses,2025-08-05,Upper end of 0.3-0.6M reported range
+TAO,active_users_low,1.5e4,entities,Taostats; consolidation of multi-UID operators,2025-08-05,Lower bound: unique economic operators after multi-hotkey consolidation (conservative)
+TAO,active_users_base,3.3e4,entities,Taostats metagraphs: 128 subnets x 256 UID slots,2025-08-05,Baseline: registered neurons (miners+validators) across all subnets; 128 subnets per Yuma State of Bittensor (Aug 2025)
+TAO,active_users_high,9.0e4,entities,Taostats accounts; Yuma report Q2-2025 wallet activity,2025-08-05,Upper bound: wallets with balances showing recent activity (32k NEW wallets with balances in Q2 2025 alone)
+BTC,total_addresses,1.2e9,addresses,BitInfoCharts,2025-08-05,Cumulative unique addresses (reported for context only; not used in D)
+ETH,total_addresses,2.5e8,addresses,Etherscan,2025-08-05,Cumulative unique addresses (reported for context only; not used in D)
+TAO,total_addresses,3.5e5,addresses,Taostats accounts,2025-08-05,Cumulative accounts (reported for context only; not used in D)
