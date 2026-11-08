@@ -915,7 +915,7 @@ Normative Resistance (\(R\)) & No established community norm around monetary rul
 \end{tabular}
 \end{table}
 
-Inflation data are sourced from publicly available metrics such as \textit{StakingRewards.com} (August 2025) \citep{stakingrewards2025eth}. We set \( \beta = 1.5 \) to moderately penalize inflation while preserving comparability across networks, and apply this value consistently to all three protocols; results under \( \beta \in \{1.0, 2.0\} \) are reported in the reproduction repository and leave the cross-protocol ordering of \( S_t \) unchanged. Equal component weights in Equation~\ref{eq:kappa} are a stated baseline; a weight-sensitivity analysis doubling each component's weight in turn (reported in the repository) likewise preserves the ordering \( \kappa_{\text{BTC}} > \kappa_{\text{ETH}} > \kappa_{\text{TAO}} \). All observations in this section refer to a 5 August 2025 snapshot; for Bittensor, this falls under the dynamic-TAO (dTAO) subnet-token regime introduced in February 2025 and predates the December 2025 halving and subsequent emission-model changes.
+Inflation data are sourced from publicly available metrics such as \textit{StakingRewards.com} (August 2025) \citep{stakingrewards2025eth}. We set \( \beta = 1.5 \) to moderately penalize inflation while preserving comparability across networks, and apply this value consistently to all three protocols; results under \( \beta \in \{1.0, 2.0\} \) are reported in the reproduction repository and leave the cross-protocol ordering of \( S_t \) unchanged. Equal component weights in Equation~\ref{eq:kappa} are a stated baseline; a weight-sensitivity analysis doubling each component's weight in turn (reported in the repository) preserves the ordering \( \kappa_{\text{BTC}} > \kappa_{\text{ETH}} > \kappa_{\text{TAO}} \) in every case but one: doubling the weight of the burn component places Ethereum, the only protocol in the sample with a genuine burn mechanism, marginally above Bitcoin (\( \kappa \) of 0.700 against 0.667). All observations in this section refer to a 5 August 2025 snapshot; for Bittensor, this falls under the dynamic-TAO (dTAO) subnet-token regime introduced in February 2025 and predates the December 2025 halving and subsequent emission-model changes.
 
 \subsubsection{Case Study: Bitcoin, Ethereum, and Bittensor}
 
@@ -1263,7 +1263,10 @@ The framework's principal limitations define its research agenda. Implied desira
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Data Availability Statement}
-The data and code that support the findings of this study, including date-stamped inputs with per-cell sources, the full computational pipeline regenerating every table and figure in Section~5 and Appendix~\ref{appendix:alpha_sensitivity}, and an automated test suite, are openly available at \url{https://github.com/apapadogiannis/economic-scarcity-as-value} and archived on Zenodo at \url{https://doi.org/10.5281/zenodo.24051776}.
+The data and code that support the findings of this study are openly available in Zenodo at \url{https://doi.org/10.5281/zenodo.24051776} and in GitHub at \url{https://github.com/apapadogiannis/economic-scarcity-as-value}. The archive contains the date-stamped inputs with per-cell sources, the computational pipeline that regenerates every table and figure in Section~5 and Appendix~\ref{appendix:alpha_sensitivity}, and an automated test suite.
+
+\section*{Funding}
+The author received no specific funding for this work.
 
 \section*{Conflict of Interest}
 The author declares no conflict of interest.
