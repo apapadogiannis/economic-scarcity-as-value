@@ -44,7 +44,7 @@ scores preserves them in 97% and 100% of 20,000 draws).
 ```
 scripts/    the model (config, scarcity, desirability, sensitivity) and one script per exhibit
 outputs/    all result tables used in the paper (CSV, LaTeX table bodies)
-figures/    the paper's empirical exhibits (matplotlib equivalents of the in-text plots)
+figures/    the paper's empirical exhibits (Figures 5 and 6), drawn by the scripts from the computed values
 paper/      the manuscript PDF and single-file LaTeX source
 data/       all input data, with source and access date per cell
 tests/      consistency tests (pytest)
@@ -72,7 +72,7 @@ committed one; the badge above shows the latest run.
 | `tables.py` | Scarcity components, kappa and S; baseline implied desirability | Tables 6 and 7, Section 5.3 |
 | `sensitivity_runs.py` | Common-alpha and beta grids over the Bittensor user range; component-weight perturbations; n log n specification; u0-rescaling check; component-score perturbation test | Appendix C (Tables 10 and 11, Sections C.1 to C.5) |
 | `fig_kappa_vs_S.py` | Structural coefficient against physical scarcity | Figure 5 |
-| `fig_desirability.py` | Implied desirability with alpha whiskers and the Bittensor user band | Figure 6 |
+| `fig_desirability.py` | Implied desirability in trillion USD; whiskers show the alpha range for Ethereum and the user-count range for Bittensor | Figure 6 |
 
 Library modules: `config.py` (every modelling convention, stated once), `scarcity.py`
 (`S = kappa (1 - pi)^beta`, `kappa` the mean of five component scores), `desirability.py`

@@ -28,3 +28,15 @@ def to_tex(df: pd.DataFrame, path: str, caption: str, label: str, float_fmt="%.4
     with open(path, "w") as f:
         f.write(df.to_latex(index=False, float_format=float_fmt,
                             caption=caption, label=label, escape=True))
+
+
+def paper_style():
+    """Match the look of the manuscript's exhibits (Computer Modern, thin frame)."""
+    import matplotlib as mpl
+    mpl.rcParams.update({
+        "font.family": "serif", "font.serif": ["cmr10", "DejaVu Serif"],
+        "mathtext.fontset": "cm", "axes.formatter.use_mathtext": True,
+        "axes.unicode_minus": False, "font.size": 11, "axes.titlesize": 12,
+        "axes.linewidth": 0.6, "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+        "ytick.minor.width": 0.4, "svg.hashsalt": "paper", "pdf.fonttype": 42,
+    })
