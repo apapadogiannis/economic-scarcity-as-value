@@ -1,6 +1,6 @@
 # Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24051776.svg)](https://doi.org/10.5281/zenodo.24051776)
+[![Zenodo](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.24051776-007ec6)](https://doi.org/10.5281/zenodo.24051776)
 [![SSRN](https://img.shields.io/badge/SSRN-10.2139%2Fssrn.5384204-1f4e79)](https://doi.org/10.2139/ssrn.5384204)
 [![replication](https://github.com/apapadogiannis/economic-scarcity-as-value/actions/workflows/replicate.yml/badge.svg)](https://github.com/apapadogiannis/economic-scarcity-as-value/actions/workflows/replicate.yml)
 
