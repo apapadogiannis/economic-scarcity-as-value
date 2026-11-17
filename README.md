@@ -6,7 +6,7 @@
 
 Replication package for the working paper by Agisilaos Papadogiannis (November 2026), under review at *IET Blockchain*.
 Paper: `paper/manuscript.pdf`; preprint on SSRN: [doi:10.2139/ssrn.5384204](https://doi.org/10.2139/ssrn.5384204).
-Archived on Zenodo: [doi:10.5281/zenodo.24051776](https://doi.org/10.5281/zenodo.24051776) (concept DOI, always resolves to the latest version; v1.0 is 10.5281/zenodo.24051777).
+Archived on Zenodo: [doi:10.5281/zenodo.24051776](https://doi.org/10.5281/zenodo.24051776) (concept DOI, always resolves to the latest version).
 
 ## What this is
 

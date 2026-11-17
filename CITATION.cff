@@ -5,8 +5,8 @@ authors:
   - family-names: Papadogiannis
     given-names: Agisilaos
     orcid: "https://orcid.org/0009-0002-7753-7052"
-date-released: 2026-11-08
-version: "1.0"
+date-released: 2026-11-17
+version: "1.1"
 doi: "10.5281/zenodo.24051776"
 license: MIT
 repository-code: "https://github.com/apapadogiannis/economic-scarcity-as-value"
