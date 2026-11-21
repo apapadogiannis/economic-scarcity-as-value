@@ -19,7 +19,7 @@
       "url": "https://creativecommons.org/licenses/by/4.0/",
       "condition": "Reuse of the results is allowed with credit to the paper.",
       "code": "MIT",
-      "third_party_data": "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
+      "third_party_data": "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each row of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
     },
     "cite_as": "Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Working paper. https://doi.org/10.2139/ssrn.5384204",
     "cite_package": "Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Replication package, version 1.2.0. Zenodo. https://doi.org/10.5281/zenodo.24051776",
@@ -188,51 +188,51 @@
       "file": "outputs/sens_scores_one_at_a_time.csv",
       "what": "Each one-at-a-time shift of a score and the orderings it gives.",
       "rows": 30,
-      "column_names": [
-        "network",
-        "component",
-        "shift",
-        "S_order",
-        "D_order",
-        "S_order_changed",
-        "D_order_changed"
-      ]
+      "columns": {
+        "network": "the network whose score is moved",
+        "component": "the component moved: C, E, B, G or R",
+        "shift": "the shift applied, kept within 0 and 1",
+        "S_order": "ordering of the networks by S after the shift",
+        "D_order": "ordering by D after the shift",
+        "S_order_changed": "True if the ordering by S differs from the baseline",
+        "D_order_changed": "True if the ordering by D differs from the baseline"
+      }
     },
     {
       "file": "outputs/sens_weights.csv",
       "what": "kappa and S under other weights of the five components.",
       "rows": 18,
-      "column_names": [
-        "scheme",
-        "network",
-        "kappa",
-        "S"
-      ]
+      "columns": {
+        "scheme": "equal, or 2x_C, 2x_E, 2x_B, 2x_G, 2x_R: the component whose weight is doubled",
+        "network": "BTC, ETH or TAO",
+        "kappa": "the structural coefficient under that scheme",
+        "S": "the scarcity index under that scheme"
+      }
     },
     {
       "file": "outputs/sens_nlogn.csv",
-      "what": "D with an n log n network effect in place of the power law.",
+      "what": "D with an n log n network effect in place of the power law: D = V / (S x (u / u0) x ln(1 + u)).",
       "rows": 5,
-      "column_names": [
-        "network",
-        "user_scenario",
-        "u",
-        "S",
-        "D_nlogn_usd"
-      ]
+      "columns": {
+        "network": "BTC, ETH or TAO",
+        "user_scenario": "base, or low and high for Bittensor",
+        "u": "user count",
+        "S": "the scarcity index",
+        "D_nlogn_usd": "implied desirability under this specification, US dollars; not comparable in level with the baseline D"
+      }
     },
     {
       "file": "outputs/sens_rescaling.csv",
       "what": "The ordering by D under different user scales, with one exponent for all networks and with protocol-specific exponents.",
       "rows": 6,
-      "column_names": [
-        "spec",
-        "U0",
-        "ordering",
-        "D_BTC",
-        "D_ETH",
-        "D_TAO"
-      ]
+      "columns": {
+        "spec": "common_alpha: alpha = 2 for all; mixed_alpha: 2 for Bitcoin and Ethereum and 2.5 for Bittensor",
+        "U0": "the scale in which users are counted: 1, 1,000 or 1,000,000",
+        "ordering": "the networks ordered by D",
+        "D_BTC": "D of Bitcoin in US dollars with users counted in units of U0 (at U0 = 1,000,000 it is the baseline D). Only the ordering and the ratios within a row are meaningful",
+        "D_ETH": "the same for Ethereum",
+        "D_TAO": "the same for Bittensor"
+      }
     }
   ]
 }

@@ -7,7 +7,7 @@ data_as_of = "Market capitalisations, issuance rates and user counts as of 5 Aug
 units = "Market value V and implied desirability D are in US dollars (the headline list converts D to trillions). The scarcity index S, its coefficient kappa and the five component scores lie between 0 and 1. The inflation rate pi is a fraction a year. User counts u are in units; u_tilde is u divided by one million."
 describe_as = "Papadogiannis (2026), \"Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond\", working paper, with its replication package."
 what = "Code, data and stored results of a working paper that writes the value of a network as desirability times scarcity times adoption, V = D x S x (u/u0)^alpha, and applies it to Bitcoin, Ethereum and Bittensor as of 5 August 2025. Scarcity S is an index built from five scored protocol features and the inflation rate; desirability D is recovered as the residual, in the way implied volatility is recovered from an option price. The manuscript is in paper/."
-third_party = "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
+third_party = "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each row of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
 results_file = "a `headline` list with the figures most often asked for, each with the table cell it comes from, and `tables`, a description of the stored result tables and their columns. The numbers themselves are in the CSV files."
 
 coverage = [
@@ -17,7 +17,7 @@ coverage = [
 ]
 adds = [
   "The five component scores are judgements, not measurements. Each is stored with its written rationale in data/scarcity_components.csv, following the scoring rubric of the paper's Table 5, so a reader can disagree with one score and recompute.",
-  "Every input cell carries its source and the date it was read, because the sources show only current values.",
+  "Every input row carries its source and the date it was read, because the sources show only current values.",
   "The sensitivity of every conclusion to the judgements is computed and stored: how the orderings of S and D change when any score is moved, when the weights change and when the exponents change.",
   "The package has consistency tests (tests/) beside the reproducibility check.",
 ]
@@ -28,6 +28,11 @@ files = [
   "paper/manuscript.pdf: the working paper.",
 ]
 read = [
+  "Baseline conventions: network-effect exponent alpha = 2 for all three networks, inflation sensitivity beta = 1.5, and users counted in millions (u0 = 1,000,000).",
+  "Two robustness results change an ordering, and the paper says so. Doubling the weight of the burn component puts Ethereum marginally above Bitcoin in scarcity (outputs/sens_weights.csv, scheme 2x_B); every other doubling keeps Bitcoin first. With an n log n network effect the ordering by D becomes Bitcoin, Ethereum, Bittensor (outputs/sens_nlogn.csv); the paper's claim there is about the pattern, not the ordering.",
+  "D is computed from the unrounded S. Recomputing it from the S stored to four decimals matches to about four significant digits.",
+  "The user counts are not the same kind of object for the three networks: active addresses for Bitcoin and Ethereum, registered participants for Bittensor. data/inputs_2025-08.csv says what each is.",
+  "In the perturbation test each score is moved by up to 0.15 and kept between 0 and 1; the joint test draws all fifteen shifts independently and uniformly, with a fixed seed.",
   "Units: V and D in US dollars; S, kappa and the component scores between 0 and 1; pi a fraction a year; u in users.",
   "Implied desirability D is a residual: the market value divided by scarcity and by the adoption term. It is not observed and it is not a price target or a fair value. A large D means the market value is high relative to measured scarcity and adoption.",
   "D depends on the user count and on the exponent alpha. For Bittensor the user count is uncertain over a wide range, and D moves with it by more than an order of magnitude: see outputs/sens_alpha_beta_users.csv before quoting a single figure.",
@@ -161,15 +166,41 @@ mc_share_D_preserved = "share in which the ordering by D is unchanged"
 [[table]]
 file = "sens_scores_one_at_a_time.csv"
 what = "Each one-at-a-time shift of a score and the orderings it gives."
+[table.columns]
+network = "the network whose score is moved"
+component = "the component moved: C, E, B, G or R"
+shift = "the shift applied, kept within 0 and 1"
+S_order = "ordering of the networks by S after the shift"
+D_order = "ordering by D after the shift"
+S_order_changed = "True if the ordering by S differs from the baseline"
+D_order_changed = "True if the ordering by D differs from the baseline"
 
 [[table]]
 file = "sens_weights.csv"
 what = "kappa and S under other weights of the five components."
+[table.columns]
+scheme = "equal, or 2x_C, 2x_E, 2x_B, 2x_G, 2x_R: the component whose weight is doubled"
+network = "BTC, ETH or TAO"
+kappa = "the structural coefficient under that scheme"
+S = "the scarcity index under that scheme"
 
 [[table]]
 file = "sens_nlogn.csv"
-what = "D with an n log n network effect in place of the power law."
+what = "D with an n log n network effect in place of the power law: D = V / (S x (u / u0) x ln(1 + u))."
+[table.columns]
+network = "BTC, ETH or TAO"
+user_scenario = "base, or low and high for Bittensor"
+u = "user count"
+S = "the scarcity index"
+D_nlogn_usd = "implied desirability under this specification, US dollars; not comparable in level with the baseline D"
 
 [[table]]
 file = "sens_rescaling.csv"
 what = "The ordering by D under different user scales, with one exponent for all networks and with protocol-specific exponents."
+[table.columns]
+spec = "common_alpha: alpha = 2 for all; mixed_alpha: 2 for Bitcoin and Ethereum and 2.5 for Bittensor"
+U0 = "the scale in which users are counted: 1, 1,000 or 1,000,000"
+ordering = "the networks ordered by D"
+D_BTC = "D of Bitcoin in US dollars with users counted in units of U0 (at U0 = 1,000,000 it is the baseline D). Only the ordering and the ratios within a row are meaningful"
+D_ETH = "the same for Ethereum"
+D_TAO = "the same for Bittensor"

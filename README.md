@@ -44,7 +44,8 @@ recovered from option prices. Three results:
 
 The conclusions survive the exponent (alpha from 1.8 to 2.5 and an n log n specification),
 the inflation sensitivity (beta from 1.0 to 2.0), the full Bittensor user range, doubling
-of any component weight, and perturbation of the component scores themselves (shifting any
+of any component weight (with one exception: doubling the weight of the burn component puts
+Ethereum marginally above Bitcoin in scarcity), and perturbation of the component scores themselves (shifting any
 single score by 0.15 leaves both orderings unchanged; joint perturbation of all fifteen
 scores preserves them in 97% and 100% of 20,000 draws).
 

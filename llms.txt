@@ -42,7 +42,7 @@ Each is read from one cell of a stored result table, named in outputs/results.js
 1. The five component scores are judgements, not measurements. Each is stored with its written
    rationale in data/scarcity_components.csv, following the scoring rubric of the paper's Table 5,
    so a reader can disagree with one score and recompute.
-2. Every input cell carries its source and the date it was read, because the sources show only
+2. Every input row carries its source and the date it was read, because the sources show only
    current values.
 3. The sensitivity of every conclusion to the judgements is computed and stored: how the orderings
    of S and D change when any score is moved, when the weights change and when the exponents
@@ -65,7 +65,8 @@ One CSV file each in outputs/. The columns of each are described in outputs/resu
 - outputs/sens_scores_one_at_a_time.csv (30 rows): Each one-at-a-time shift of a score and the
   orderings it gives.
 - outputs/sens_weights.csv (18 rows): kappa and S under other weights of the five components.
-- outputs/sens_nlogn.csv (5 rows): D with an n log n network effect in place of the power law.
+- outputs/sens_nlogn.csv (5 rows): D with an n log n network effect in place of the power law: D =
+  V / (S x (u / u0) x ln(1 + u)).
 - outputs/sens_rescaling.csv (6 rows): The ordering by D under different user scales, with one
   exponent for all networks and with protocol-specific exponents.
 
@@ -86,6 +87,20 @@ Raw files: https://raw.githubusercontent.com/apapadogiannis/economic-scarcity-as
 
 ## How to read the figures
 
+- Baseline conventions: network-effect exponent alpha = 2 for all three networks, inflation
+  sensitivity beta = 1.5, and users counted in millions (u0 = 1,000,000).
+- Two robustness results change an ordering, and the paper says so. Doubling the weight of the burn
+  component puts Ethereum marginally above Bitcoin in scarcity (outputs/sens_weights.csv, scheme
+  2x_B); every other doubling keeps Bitcoin first. With an n log n network effect the ordering by D
+  becomes Bitcoin, Ethereum, Bittensor (outputs/sens_nlogn.csv); the paper's claim there is about
+  the pattern, not the ordering.
+- D is computed from the unrounded S. Recomputing it from the S stored to four decimals matches to
+  about four significant digits.
+- The user counts are not the same kind of object for the three networks: active addresses for
+  Bitcoin and Ethereum, registered participants for Bittensor. data/inputs_2025-08.csv says what
+  each is.
+- In the perturbation test each score is moved by up to 0.15 and kept between 0 and 1; the joint
+  test draws all fifteen shifts independently and uniformly, with a fixed seed.
 - Units: V and D in US dollars; S, kappa and the component scores between 0 and 1; pi a fraction a
   year; u in users.
 - Implied desirability D is a residual: the market value divided by scarcity and by the adoption
@@ -119,7 +134,7 @@ The code is under the MIT License.
 
 The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com,
 address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from
-Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the
+Taostats. Each row of data/inputs_2025-08.csv carries its source and access date. They remain the
 property of their sources and are not covered by the licence above.
 
 Cite as: Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Working paper. https://doi.org/10.2139/ssrn.5384204
