@@ -8,6 +8,16 @@ Replication package for the working paper by Agisilaos Papadogiannis (November 2
 Paper: `paper/manuscript.pdf`; preprint on SSRN: [doi:10.2139/ssrn.5384204](https://doi.org/10.2139/ssrn.5384204).
 Archived on Zenodo: [doi:10.5281/zenodo.24051776](https://doi.org/10.5281/zenodo.24051776) (concept DOI, always resolves to the latest version).
 
+## For AI agents and programs
+
+Read [`llms.txt`](llms.txt) first. It says what the package holds, what it adds over reading the
+paper or recomputing, how to read the figures and what not to use them for. It opens with the
+headline figures. [`outputs/results.json`](outputs/results.json) holds the same headline figures,
+each with the table cell it is read from, a description of the result tables and their columns, and
+the paper, the identifiers, the version, the licence and the citation under its `package` key. Both
+files are written by `scripts/make_guide.py` from `CITATION.cff`, `guide.toml` and the stored tables,
+and both are covered by the check.
+
 ## What this is
 
 A structural valuation framework in which economic scarcity, the monetizable intersection
@@ -43,6 +53,7 @@ scores preserves them in 97% and 100% of 20,000 draws).
 ```
 scripts/    the model (config, scarcity, desirability, sensitivity) and one script per exhibit
 outputs/    all result tables used in the paper (CSV, LaTeX table bodies)
+llms.txt    guide for AI agents and programs, generated; guide.toml holds its statements about this package
 figures/    the paper's empirical exhibits (Figures 5 and 6), drawn by the scripts from the computed values
 paper/      the manuscript PDF and single-file LaTeX source
 data/       all input data, with source and access date per cell
@@ -80,7 +91,7 @@ Library modules: `config.py` (every modelling convention, stated once), `scarcit
 ## How the check works
 
 ```bash
-python3 check_outputs.py    # reruns ./run_all.sh, then compares
+python3 check_outputs.py --also llms.txt    # reruns ./run_all.sh, then compares
 ```
 
 1. The result tables in `outputs/` are stored in this repository exactly as they were when the

@@ -1,0 +1,175 @@
+# The statements of llms.txt and of outputs/results.json that are specific to this package.
+# scripts/make_guide.py combines them with CITATION.cff and the stored result tables. No result of
+# the paper is written here: every headline figure names the table cell it is read from.
+
+ssrn = "10.2139/ssrn.5384204"
+data_as_of = "Market capitalisations, issuance rates and user counts as of 5 August 2025."
+units = "Market value V and implied desirability D are in US dollars (the headline list converts D to trillions). The scarcity index S, its coefficient kappa and the five component scores lie between 0 and 1. The inflation rate pi is a fraction a year. User counts u are in units; u_tilde is u divided by one million."
+describe_as = "Papadogiannis (2026), \"Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond\", working paper, with its replication package."
+what = "Code, data and stored results of a working paper that writes the value of a network as desirability times scarcity times adoption, V = D x S x (u/u0)^alpha, and applies it to Bitcoin, Ethereum and Bittensor as of 5 August 2025. Scarcity S is an index built from five scored protocol features and the inflation rate; desirability D is recovered as the residual, in the way implied volatility is recovered from an option price. The manuscript is in paper/."
+third_party = "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
+results_file = "a `headline` list with the figures most often asked for, each with the table cell it comes from, and `tables`, a description of the stored result tables and their columns. The numbers themselves are in the CSV files."
+
+coverage = [
+  "Table 6: for each network the inflation rate, the five component scores, the structural coefficient kappa and the physical-scarcity index S.",
+  "Table 7: market value, scarcity, users and the implied desirability D at the baseline.",
+  "Appendix C: D across the network-effect exponent alpha (1.8 to 2.5), the inflation sensitivity beta (1.0 to 2.0) and the range of Bittensor user counts; an n log n specification; other component weights; the choice of the user scale; and perturbation of the component scores, one at a time and jointly in 20,000 draws.",
+]
+adds = [
+  "The five component scores are judgements, not measurements. Each is stored with its written rationale in data/scarcity_components.csv, following the scoring rubric of the paper's Table 5, so a reader can disagree with one score and recompute.",
+  "Every input cell carries its source and the date it was read, because the sources show only current values.",
+  "The sensitivity of every conclusion to the judgements is computed and stored: how the orderings of S and D change when any score is moved, when the weights change and when the exponents change.",
+  "The package has consistency tests (tests/) beside the reproducibility check.",
+]
+files = [
+  "data/inputs_2025-08.csv: the inputs, one row per network and variable, with unit, source, access date and notes.",
+  "data/scarcity_components.csv: the five scores of each network with the rationale of each.",
+  "outputs/tab_*.tex: the bodies of the paper's tables as printed.",
+  "paper/manuscript.pdf: the working paper.",
+]
+read = [
+  "Units: V and D in US dollars; S, kappa and the component scores between 0 and 1; pi a fraction a year; u in users.",
+  "Implied desirability D is a residual: the market value divided by scarcity and by the adoption term. It is not observed and it is not a price target or a fair value. A large D means the market value is high relative to measured scarcity and adoption.",
+  "D depends on the user count and on the exponent alpha. For Bittensor the user count is uncertain over a wide range, and D moves with it by more than an order of magnitude: see outputs/sens_alpha_beta_users.csv before quoting a single figure.",
+  "The component columns are C (cap enforcement), E (emission rigidity), B (burn mechanism), G (governance mutability, scored 1 where the rules are hardest to change) and R (normative resistance), each scored from 0 to 1 by the rubric of the paper's Table 5. kappa is their average, and S = kappa x (1 - pi)^beta.",
+  "The ordering of the three networks by D holds with one exponent for all; with protocol-specific exponents it changes with the unit in which users are counted. outputs/sens_rescaling.csv shows this.",
+  "All figures are for one date, 5 August 2025, and three networks.",
+]
+not_for = [
+  "A valuation of any of the three assets, or a view on which is cheap or dear.",
+  "Current market values, issuance or user counts.",
+  "A measured scarcity of a network: S rests on scores that are judgements.",
+  "Other networks. The scores exist for these three only.",
+]
+
+[[headline]]
+what = "Physical-scarcity index S of Bitcoin"
+file = "tab_scarcity.csv"
+row = { network = "BTC" }
+column = "S"
+unit = "(index between 0 and 1)"
+where = "Table 6"
+
+[[headline]]
+what = "Physical-scarcity index S of Ethereum"
+file = "tab_scarcity.csv"
+row = { network = "ETH" }
+column = "S"
+unit = "(index between 0 and 1)"
+where = "Table 6"
+
+[[headline]]
+what = "Physical-scarcity index S of Bittensor"
+file = "tab_scarcity.csv"
+row = { network = "TAO" }
+column = "S"
+unit = "(index between 0 and 1)"
+where = "Table 6"
+
+[[headline]]
+what = "Implied desirability D of Bitcoin, baseline"
+file = "tab_desirability.csv"
+row = { network = "BTC" }
+column = "D_usd"
+scale = 1e-12
+decimals = 2
+unit = "trillion US dollars"
+where = "Table 7"
+
+[[headline]]
+what = "Implied desirability D of Ethereum, baseline"
+file = "tab_desirability.csv"
+row = { network = "ETH" }
+column = "D_usd"
+scale = 1e-12
+decimals = 2
+unit = "trillion US dollars"
+where = "Table 7"
+
+[[headline]]
+what = "Implied desirability D of Bittensor, at the baseline user count"
+file = "tab_desirability.csv"
+row = { network = "TAO" }
+column = "D_usd"
+scale = 1e-12
+decimals = 2
+unit = "trillion US dollars (it ranges widely with the user count)"
+where = "Table 7"
+
+[[headline]]
+what = "Share of 20,000 joint perturbations of the scores in which the ordering by S is unchanged"
+file = "sens_scores_summary.csv"
+row = { delta = "0.15" }
+column = "mc_share_S_preserved"
+scale = 100
+decimals = 0
+unit = "per cent"
+where = "Appendix C"
+
+[[table]]
+file = "tab_scarcity.csv"
+what = "Table 6: inflation, component scores, kappa and S by network."
+[table.columns]
+network = "BTC, ETH or TAO (Bittensor)"
+pi = "annual inflation rate of the supply, a fraction"
+C = "cap enforcement, 0 to 1"
+E = "emission rigidity"
+B = "burn mechanism"
+G = "governance mutability (1 where the rules are hardest to change)"
+R = "normative resistance"
+kappa = "the structural coefficient, the average of the five scores"
+S = "the physical-scarcity index, kappa x (1 - pi)^beta, with beta 1 at the baseline"
+
+[[table]]
+file = "tab_desirability.csv"
+what = "Table 7: the baseline implied desirability by network."
+[table.columns]
+network = "BTC, ETH or TAO"
+V_usd = "market capitalisation on 5 August 2025, US dollars"
+S = "the physical-scarcity index"
+u = "user count used at the baseline"
+u_tilde = "u divided by the common scale of one million"
+alpha = "the network-effect exponent"
+D_usd = "implied desirability, V / (S x u_tilde^alpha), US dollars"
+
+[[table]]
+file = "sens_alpha_beta_users.csv"
+what = "D across alpha, beta and the Bittensor user range."
+[table.columns]
+network = "BTC, ETH or TAO"
+alpha = "the network-effect exponent"
+beta = "the sensitivity of S to inflation"
+user_scenario = "base, or low and high for Bittensor"
+u = "user count"
+S = "the scarcity index at that beta"
+D_usd = "implied desirability, US dollars"
+
+[[table]]
+file = "sens_scores_summary.csv"
+what = "Perturbation of the component scores: how often the orderings by S and by D survive."
+[table.columns]
+delta = "size of the shift applied to a score"
+baseline_S_order = "ordering of the networks by S at the baseline"
+baseline_D_order = "ordering by D at the baseline"
+oat_S_flips = "number of one-at-a-time shifts that change the ordering by S"
+oat_D_flips = "number that change the ordering by D"
+oat_cases = "number of one-at-a-time shifts tried"
+mc_draws = "number of joint random draws"
+mc_share_S_preserved = "share of draws in which the ordering by S is unchanged"
+mc_share_D_preserved = "share in which the ordering by D is unchanged"
+
+[[table]]
+file = "sens_scores_one_at_a_time.csv"
+what = "Each one-at-a-time shift of a score and the orderings it gives."
+
+[[table]]
+file = "sens_weights.csv"
+what = "kappa and S under other weights of the five components."
+
+[[table]]
+file = "sens_nlogn.csv"
+what = "D with an n log n network effect in place of the power law."
+
+[[table]]
+file = "sens_rescaling.csv"
+what = "The ordering by D under different user scales, with one exponent for all networks and with protocol-specific exponents."

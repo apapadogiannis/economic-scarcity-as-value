@@ -1,0 +1,238 @@
+{
+  "package": {
+    "title": "Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond",
+    "author": {
+      "name": "Agisilaos Papadogiannis",
+      "orcid": "https://orcid.org/0009-0002-7753-7052",
+      "url": "https://github.com/apapadogiannis"
+    },
+    "status": "working paper",
+    "preprint": "https://doi.org/10.2139/ssrn.5384204",
+    "repository": "https://github.com/apapadogiannis/economic-scarcity-as-value",
+    "archive": "https://doi.org/10.5281/zenodo.24051776",
+    "version": "1.2.0",
+    "released": "2026-11-21",
+    "data_as_of": "Market capitalisations, issuance rates and user counts as of 5 August 2025.",
+    "units": "Market value V and implied desirability D are in US dollars (the headline list converts D to trillions). The scarcity index S, its coefficient kappa and the five component scores lie between 0 and 1. The inflation rate pi is a fraction a year. User counts u are in units; u_tilde is u divided by one million.",
+    "licence": {
+      "results": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "condition": "Reuse of the results is allowed with credit to the paper.",
+      "code": "MIT",
+      "third_party_data": "The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com, address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the property of their sources and are not covered by the licence above."
+    },
+    "cite_as": "Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Working paper. https://doi.org/10.2139/ssrn.5384204",
+    "cite_package": "Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Replication package, version 1.2.0. Zenodo. https://doi.org/10.5281/zenodo.24051776",
+    "describe_as": "Papadogiannis (2026), \"Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond\", working paper, with its replication package.",
+    "guide": "llms.txt"
+  },
+  "headline": [
+    {
+      "what": "Physical-scarcity index S of Bitcoin",
+      "value": 0.7797,
+      "unit": "(index between 0 and 1)",
+      "where": "Table 6",
+      "source": {
+        "file": "outputs/tab_scarcity.csv",
+        "row": {
+          "network": "BTC"
+        },
+        "column": "S"
+      }
+    },
+    {
+      "what": "Physical-scarcity index S of Ethereum",
+      "value": 0.673,
+      "unit": "(index between 0 and 1)",
+      "where": "Table 6",
+      "source": {
+        "file": "outputs/tab_scarcity.csv",
+        "row": {
+          "network": "ETH"
+        },
+        "column": "S"
+      }
+    },
+    {
+      "what": "Physical-scarcity index S of Bittensor",
+      "value": 0.4265,
+      "unit": "(index between 0 and 1)",
+      "where": "Table 6",
+      "source": {
+        "file": "outputs/tab_scarcity.csv",
+        "row": {
+          "network": "TAO"
+        },
+        "column": "S"
+      }
+    },
+    {
+      "what": "Implied desirability D of Bitcoin, baseline",
+      "value": 2.95,
+      "unit": "trillion US dollars",
+      "where": "Table 7",
+      "source": {
+        "file": "outputs/tab_desirability.csv",
+        "row": {
+          "network": "BTC"
+        },
+        "column": "D_usd",
+        "multiplied_by": 1e-12
+      }
+    },
+    {
+      "what": "Implied desirability D of Ethereum, baseline",
+      "value": 2.31,
+      "unit": "trillion US dollars",
+      "where": "Table 7",
+      "source": {
+        "file": "outputs/tab_desirability.csv",
+        "row": {
+          "network": "ETH"
+        },
+        "column": "D_usd",
+        "multiplied_by": 1e-12
+      }
+    },
+    {
+      "what": "Implied desirability D of Bittensor, at the baseline user count",
+      "value": 7.02,
+      "unit": "trillion US dollars (it ranges widely with the user count)",
+      "where": "Table 7",
+      "source": {
+        "file": "outputs/tab_desirability.csv",
+        "row": {
+          "network": "TAO"
+        },
+        "column": "D_usd",
+        "multiplied_by": 1e-12
+      }
+    },
+    {
+      "what": "Share of 20,000 joint perturbations of the scores in which the ordering by S is unchanged",
+      "value": 97,
+      "unit": "per cent",
+      "where": "Appendix C",
+      "source": {
+        "file": "outputs/sens_scores_summary.csv",
+        "row": {
+          "delta": "0.15"
+        },
+        "column": "mc_share_S_preserved",
+        "multiplied_by": 100
+      }
+    }
+  ],
+  "tables": [
+    {
+      "file": "outputs/tab_scarcity.csv",
+      "what": "Table 6: inflation, component scores, kappa and S by network.",
+      "rows": 3,
+      "columns": {
+        "network": "BTC, ETH or TAO (Bittensor)",
+        "pi": "annual inflation rate of the supply, a fraction",
+        "C": "cap enforcement, 0 to 1",
+        "E": "emission rigidity",
+        "B": "burn mechanism",
+        "G": "governance mutability (1 where the rules are hardest to change)",
+        "R": "normative resistance",
+        "kappa": "the structural coefficient, the average of the five scores",
+        "S": "the physical-scarcity index, kappa x (1 - pi)^beta, with beta 1 at the baseline"
+      }
+    },
+    {
+      "file": "outputs/tab_desirability.csv",
+      "what": "Table 7: the baseline implied desirability by network.",
+      "rows": 3,
+      "columns": {
+        "network": "BTC, ETH or TAO",
+        "V_usd": "market capitalisation on 5 August 2025, US dollars",
+        "S": "the physical-scarcity index",
+        "u": "user count used at the baseline",
+        "u_tilde": "u divided by the common scale of one million",
+        "alpha": "the network-effect exponent",
+        "D_usd": "implied desirability, V / (S x u_tilde^alpha), US dollars"
+      }
+    },
+    {
+      "file": "outputs/sens_alpha_beta_users.csv",
+      "what": "D across alpha, beta and the Bittensor user range.",
+      "rows": 60,
+      "columns": {
+        "network": "BTC, ETH or TAO",
+        "alpha": "the network-effect exponent",
+        "beta": "the sensitivity of S to inflation",
+        "user_scenario": "base, or low and high for Bittensor",
+        "u": "user count",
+        "S": "the scarcity index at that beta",
+        "D_usd": "implied desirability, US dollars"
+      }
+    },
+    {
+      "file": "outputs/sens_scores_summary.csv",
+      "what": "Perturbation of the component scores: how often the orderings by S and by D survive.",
+      "rows": 1,
+      "columns": {
+        "delta": "size of the shift applied to a score",
+        "baseline_S_order": "ordering of the networks by S at the baseline",
+        "baseline_D_order": "ordering by D at the baseline",
+        "oat_S_flips": "number of one-at-a-time shifts that change the ordering by S",
+        "oat_D_flips": "number that change the ordering by D",
+        "oat_cases": "number of one-at-a-time shifts tried",
+        "mc_draws": "number of joint random draws",
+        "mc_share_S_preserved": "share of draws in which the ordering by S is unchanged",
+        "mc_share_D_preserved": "share in which the ordering by D is unchanged"
+      }
+    },
+    {
+      "file": "outputs/sens_scores_one_at_a_time.csv",
+      "what": "Each one-at-a-time shift of a score and the orderings it gives.",
+      "rows": 30,
+      "column_names": [
+        "network",
+        "component",
+        "shift",
+        "S_order",
+        "D_order",
+        "S_order_changed",
+        "D_order_changed"
+      ]
+    },
+    {
+      "file": "outputs/sens_weights.csv",
+      "what": "kappa and S under other weights of the five components.",
+      "rows": 18,
+      "column_names": [
+        "scheme",
+        "network",
+        "kappa",
+        "S"
+      ]
+    },
+    {
+      "file": "outputs/sens_nlogn.csv",
+      "what": "D with an n log n network effect in place of the power law.",
+      "rows": 5,
+      "column_names": [
+        "network",
+        "user_scenario",
+        "u",
+        "S",
+        "D_nlogn_usd"
+      ]
+    },
+    {
+      "file": "outputs/sens_rescaling.csv",
+      "what": "The ordering by D under different user scales, with one exponent for all networks and with protocol-specific exponents.",
+      "rows": 6,
+      "column_names": [
+        "spec",
+        "U0",
+        "ordering",
+        "D_BTC",
+        "D_ETH",
+        "D_TAO"
+      ]
+    }
+  ]
+}

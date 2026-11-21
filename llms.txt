@@ -1,0 +1,132 @@
+# Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond
+
+> Code, data and stored results of a working paper that writes the value of a network as
+> desirability times scarcity times adoption, V = D x S x (u/u0)^alpha, and applies it to Bitcoin,
+> Ethereum and Bittensor as of 5 August 2025. Scarcity S is an index built from five scored
+> protocol features and the inflation rate; desirability D is recovered as the residual, in the way
+> implied volatility is recovered from an option price. The manuscript is in paper/.
+
+Replication package by Agisilaos Papadogiannis (https://github.com/apapadogiannis).
+Working paper: https://doi.org/10.2139/ssrn.5384204
+Code and data: https://github.com/apapadogiannis/economic-scarcity-as-value  Archive: https://doi.org/10.5281/zenodo.24051776
+Version 1.2.0, released 2026-11-21. A package is a fixed record: it changes only by a new
+release, and a release that changes a reported number gets a new major version.
+This file is written for AI agents and other programs. People should start at the README.
+
+## Coverage
+
+- Table 6: for each network the inflation rate, the five component scores, the structural
+  coefficient kappa and the physical-scarcity index S.
+- Table 7: market value, scarcity, users and the implied desirability D at the baseline.
+- Appendix C: D across the network-effect exponent alpha (1.8 to 2.5), the inflation sensitivity
+  beta (1.0 to 2.0) and the range of Bittensor user counts; an n log n specification; other
+  component weights; the choice of the user scale; and perturbation of the component scores, one at
+  a time and jointly in 20,000 draws.
+
+## Headline figures
+
+Each is read from one cell of a stored result table, named in outputs/results.json.
+
+- Physical-scarcity index S of Bitcoin: 0.7797 (index between 0 and 1). Table 6.
+- Physical-scarcity index S of Ethereum: 0.673 (index between 0 and 1). Table 6.
+- Physical-scarcity index S of Bittensor: 0.4265 (index between 0 and 1). Table 6.
+- Implied desirability D of Bitcoin, baseline: 2.95 trillion US dollars. Table 7.
+- Implied desirability D of Ethereum, baseline: 2.31 trillion US dollars. Table 7.
+- Implied desirability D of Bittensor, at the baseline user count: 7.02 trillion US dollars (it
+  ranges widely with the user count). Table 7.
+- Share of 20,000 joint perturbations of the scores in which the ordering by S is unchanged: 97 per
+  cent. Appendix C.
+
+## What this adds over reading the paper or recomputing
+
+1. The five component scores are judgements, not measurements. Each is stored with its written
+   rationale in data/scarcity_components.csv, following the scoring rubric of the paper's Table 5,
+   so a reader can disagree with one score and recompute.
+2. Every input cell carries its source and the date it was read, because the sources show only
+   current values.
+3. The sensitivity of every conclusion to the judgements is computed and stored: how the orderings
+   of S and D change when any score is moved, when the weights change and when the exponents
+   change.
+4. The package has consistency tests (tests/) beside the reproducibility check.
+5. The results are stored as they were when the paper's numbers were taken from them. A check
+   reruns the code on the stored data and compares every stored result file with the fresh one,
+   number by number (relative tolerance 1e-9; text and whole numbers exactly). It runs on every
+   change and once a month, and the badge in the README shows the last run.
+
+## Result tables
+
+One CSV file each in outputs/. The columns of each are described in outputs/results.json, under `tables`.
+
+- outputs/tab_scarcity.csv (3 rows): Table 6: inflation, component scores, kappa and S by network.
+- outputs/tab_desirability.csv (3 rows): Table 7: the baseline implied desirability by network.
+- outputs/sens_alpha_beta_users.csv (60 rows): D across alpha, beta and the Bittensor user range.
+- outputs/sens_scores_summary.csv (1 rows): Perturbation of the component scores: how often the
+  orderings by S and by D survive.
+- outputs/sens_scores_one_at_a_time.csv (30 rows): Each one-at-a-time shift of a score and the
+  orderings it gives.
+- outputs/sens_weights.csv (18 rows): kappa and S under other weights of the five components.
+- outputs/sens_nlogn.csv (5 rows): D with an n log n network effect in place of the power law.
+- outputs/sens_rescaling.csv (6 rows): The ordering by D under different user scales, with one
+  exponent for all networks and with protocol-specific exponents.
+
+## Files
+
+- outputs/results.json: a `headline` list with the figures most often asked for, each with the
+  table cell it comes from, and `tables`, a description of the stored result tables and their
+  columns. The numbers themselves are in the CSV files. It holds a description of 8 result tables,
+  and under `package` the paper, the identifiers, the version, the licence and the citation. Start
+  with its `headline` list, which is repeated below.
+- data/inputs_2025-08.csv: the inputs, one row per network and variable, with unit, source, access
+  date and notes.
+- data/scarcity_components.csv: the five scores of each network with the rationale of each.
+- outputs/tab_*.tex: the bodies of the paper's tables as printed.
+- paper/manuscript.pdf: the working paper.
+
+Raw files: https://raw.githubusercontent.com/apapadogiannis/economic-scarcity-as-value/main/<path>, for example https://raw.githubusercontent.com/apapadogiannis/economic-scarcity-as-value/main/outputs/results.json
+
+## How to read the figures
+
+- Units: V and D in US dollars; S, kappa and the component scores between 0 and 1; pi a fraction a
+  year; u in users.
+- Implied desirability D is a residual: the market value divided by scarcity and by the adoption
+  term. It is not observed and it is not a price target or a fair value. A large D means the market
+  value is high relative to measured scarcity and adoption.
+- D depends on the user count and on the exponent alpha. For Bittensor the user count is uncertain
+  over a wide range, and D moves with it by more than an order of magnitude: see
+  outputs/sens_alpha_beta_users.csv before quoting a single figure.
+- The component columns are C (cap enforcement), E (emission rigidity), B (burn mechanism), G
+  (governance mutability, scored 1 where the rules are hardest to change) and R (normative
+  resistance), each scored from 0 to 1 by the rubric of the paper's Table 5. kappa is their
+  average, and S = kappa x (1 - pi)^beta.
+- The ordering of the three networks by D holds with one exponent for all; with protocol-specific
+  exponents it changes with the unit in which users are counted. outputs/sens_rescaling.csv shows
+  this.
+- All figures are for one date, 5 August 2025, and three networks.
+
+## Do not use this for
+
+- A valuation of any of the three assets, or a view on which is cheap or dear.
+- Current market values, issuance or user counts.
+- A measured scarcity of a network: S rests on scores that are judgements.
+- Other networks. The scores exist for these three only.
+
+## Source, licence and credit
+
+The results in outputs/ are released under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). The licence allows any reuse and has one condition:
+credit. If you use a figure from this package in an answer, a report or a data set, cite the paper.
+The code is under the MIT License.
+
+The inputs are market capitalisations from CoinGecko, issuance rates from StakingRewards.com,
+address counts from Glassnode, Etherscan and BitInfoCharts, and Bittensor participation counts from
+Taostats. Each cell of data/inputs_2025-08.csv carries its source and access date. They remain the
+property of their sources and are not covered by the licence above.
+
+Cite as: Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Working paper. https://doi.org/10.2139/ssrn.5384204
+
+The package itself: Papadogiannis, A. (2026). Economic Scarcity as Value: A Universal Framework for Blockchain and Beyond. Replication package, version 1.2.0. Zenodo. https://doi.org/10.5281/zenodo.24051776
+
+To describe the source in a sentence: Papadogiannis (2026), "Economic Scarcity as Value: A
+Universal Framework for Blockchain and Beyond", working paper, with its replication package.
+
+The same licence and citation are inside outputs/results.json, under `package`.
