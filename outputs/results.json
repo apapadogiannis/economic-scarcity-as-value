@@ -137,7 +137,7 @@
         "G": "governance mutability (1 where the rules are hardest to change)",
         "R": "normative resistance",
         "kappa": "the structural coefficient, the average of the five scores",
-        "S": "the physical-scarcity index, kappa x (1 - pi)^beta, with beta 1 at the baseline"
+        "S": "the physical-scarcity index, kappa x (1 - pi)^beta, with beta 1.5 at the baseline"
       }
     },
     {
